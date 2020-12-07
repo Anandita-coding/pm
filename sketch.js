@@ -33,7 +33,7 @@ function setup() {
 }
 
 
-function draw() {
+function draw(11) {
   rectMode(CENTER);
   background("skyBlue");
   tree.display();
@@ -48,21 +48,29 @@ function draw() {
   mango8.display();
   slingShot.display();
   stone.display();
+  detectCollision1(stone,mango1);
+  detectCollision1(stone,mango2);
+  detectCollision1(stone,mango3);
+  detectCollision1(stone,mango4);
+  detectCollision1(stone,mango5);
+  detectCollision1(stone,mango6);
+  detectCollision1(stone,mango7);
+  detectCollision1(stone,mango8);		
   drawSprites();
- detectCollision1();
+ 
 }
 
 function mouseDragged(){
   Matter.Body.setPosition(stone.body,{x:mouseX,y:mouseY})
   }
-function detectCollision1(stone,mango1){
-  mango1Bodyposition = mango1.body.position
+function detectCollision1(stone,mango){
+  mango1Bodyposition = mango.body.position
   stonebodyposition = stone.body.position
 
   var distance = dist(stonebodyposition.x,stonebodyposition.y,mango1Bodyposition.x,mango1Bodyposition.y)
   
-  if(distance<=mango1.r+stone.r){
-    Matter.Body .setStatic(mango1.body,false)
+  if(distance<=mango.r+stone.r){
+    Matter.Body .setStatic(mango.body,false)
   }
 
 }
